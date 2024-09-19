@@ -1,0 +1,10 @@
+export enum DepartmentTypeEnum {
+  SCIENCE = 1,
+  MATHEMATICS,
+  BUSINESS,
+  ENGLISH_LANGUAGE,
+  CHINESE,
+  AESTHETICS,
+  MUSIC,
+  PRESCHOOL,
+}

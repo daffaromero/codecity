@@ -1,0 +1,173 @@
+{
+  "name": "hris-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3009",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "clean": "rimraf --no-glob ./.next ./.next-dev ./out ./.firebase",
+    "lint": "next lint --max-warnings=0",
+    "lint:fix": "next lint --fix",
+    "format": "prettier -c src",
+    "format:fix": "prettier -w src",
+    "typecheck": "tsc --noEmit --incremental false"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.4",
+    "@sentry/nextjs": "^7.12.1",
+    "@tanem/react-nprogress": "^5.0.11",
+    "clsx": "^1.2.1",
+    "cookies-next": "^2.1.1",
+    "i18next": "^21.10.0",
+    "luxon": "^3.0.1",
+    "nanoid": "^4.0.0",
+    "next": "^12.2.0",
+    "next-redux-wrapper": "^7.0.5",
+    "next-seo": "^5.5.0",
+    "qs": "^6.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.36.1",
+    "react-i18next": "^11.18.6",
+    "react-redux": "^8.0.2",
+    "redux": "^4.2.0",
+    "tailwind-merge": "^1.6.0",
+    "tailwindcss": "^3.1.8",
+    "ua-parser-js": "^1.0.2",
+    "use-onclickoutside": "^0.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.19.0",
+    "@headlessui/react": "^1.7.0",
+    "@next/env": "^12.2.5",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@svgr/webpack": "^6.3.1",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.7",
+    "@types/luxon": "^3.0.0",
+    "@types/node": "^16.11.48",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "18.0.0",
+    "@types/ua-parser-js": "^0.7.36",
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "autoprefixer": "^10.4.8",
+    "eslint": "^8.21.0",
+    "eslint-config-next": "^12.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-tailwindcss": "^3.6.2",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "is-ci": "^3.0.1",
+    "postcss": "^8.4.12",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5",
+    "typescript": "^4.7.0"
+  },
+  "release": {
+    "branches": [],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "breaking",
+              "release": "major"
+            },
+            {
+              "type": "build",
+              "release": "minor"
+            },
+            {
+              "type": "ci",
+              "release": "patch"
+            },
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "feat",
+              "release": "minor"
+            },
+            {
+              "type": "fix",
+              "release": "patch"
+            },
+            {
+              "type": "perf",
+              "release": "patch"
+            },
+            {
+              "type": "refactor",
+              "release": "patch"
+            },
+            {
+              "type": "test",
+              "release": "patch"
+            },
+            {
+              "type": "lint",
+              "release": "patch"
+            }
+          ],
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "angular",
+          "parserOpts": {
+            "noteKeywords": [
+              "BREAKING CHANGE",
+              "BREAKING CHANGES",
+              "BREAKING"
+            ]
+          },
+          "writerOpts": {
+            "commitsSort": [
+              "subject",
+              "scope"
+            ]
+          }
+        }
+      ],
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogTitle": "# Changelog",
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md"
+          ],
+          "message": "Add changelog for ${nextRelease.version}"
+        }
+      ]
+    ]
+  }
+}

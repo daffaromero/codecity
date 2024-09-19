@@ -1,0 +1,16 @@
+export enum MimeTypeEnum {
+  'image/jpeg' = 1,
+  'image/gif',
+  'image/png',
+  'video/mp4',
+  'video/mpeg',
+  'application/pdf',
+  'application/vnd.ms-powerpoint',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'audio/mp4',
+  'audio/mpeg',
+  'audio/ogg',
+  'audio/vnd.wav',
+  'audio/wav',
+  'audio/wave',
+}

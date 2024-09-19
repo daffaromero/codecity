@@ -1,0 +1,7 @@
+{
+  "titles": {
+    "home": "Beranda",
+    "example": "Modul Contoh"
+  },
+  "backTo": "Kembali Ke {{page}}"
+}
