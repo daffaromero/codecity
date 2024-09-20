@@ -4,7 +4,7 @@ Welcome to the Kotakodelab work sample for Full-Stack developers (TypeScript & N
 
 ## Context
 
-We have implemented basic backend service written in TypeScript also implemented TypeORM as the ORM to create Staffs. Currently, we would like to extend the service, so we need to track the **staffs attendance** by creating Clock in & Clock out features.
+We have implemented basic backend service written in TypeScript also implemented TypeORM as the ORM to create Staffs. Currently, we would like to extend the service, so we need to track the **staff attendance** by creating Clock in & Clock out features.
 
 ## Data Models & Relationships
 

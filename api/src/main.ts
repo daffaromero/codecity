@@ -19,7 +19,7 @@ async function bootstrap(): Promise<NestExpressApplication> {
     AppModule,
     new ExpressAdapter(),
     {
-      logger: ['error', 'warn'],
+      logger: ['log', 'error', 'warn'],
       cors: true,
     },
   );

@@ -35,13 +35,13 @@ export class StaffService {
 
   async findAll(
     options: GetStaffDto,
-  ): Promise<{ staffs: StaffDto[]; count: number; meta: PageMetaDto }> {
+  ): Promise<{ staffPlural: StaffDto[]; count: number; meta: PageMetaDto }> {
     const whereFilters: FindOptionsWhere<Staff> = {};
     if (options.firstName)
       whereFilters.firstName = ILike(`%${options.firstName}%`);
     if (options.email) whereFilters.email = ILike(`%${options.email}%`);
 
-    const [staffs, count] = await Staff.findAndCount({
+    const [staffPlural, count] = await Staff.findAndCount({
       where: whereFilters,
       take: options.pageSize,
       skip: options.page * options.pageSize,
@@ -50,8 +50,8 @@ export class StaffService {
       itemCount: count,
       pageOptionsDto: options,
     });
-    const staffDto = staffs.map((staff) => new StaffDto(staff));
-    return { staffs: staffDto, count, meta };
+    const staffDto = staffPlural.map((staff) => new StaffDto(staff));
+    return { staffPlural: staffDto, count, meta };
   }
 
   async findOne(options: { id: string }): Promise<StaffDto> {

@@ -13,7 +13,7 @@ import { CreateStaffDto } from './dto/create-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
 import { GetStaffDto } from './dto/get-staff.dto';
 
-@Controller({ version: '1', path: 'staffs' })
+@Controller({ version: '1', path: 'staff' })
 export class StaffController {
   constructor(private readonly staffService: StaffService) {}
 
@@ -25,8 +25,8 @@ export class StaffController {
 
   @Get()
   async findAll(@Query(ValidationPipe) options: GetStaffDto) {
-    const { staffs, count, meta } = await this.staffService.findAll(options);
-    return { data: staffs, count, meta };
+    const { staffPlural, count, meta } = await this.staffService.findAll(options);
+    return { data: staffPlural, count, meta };
   }
 
   @Get(':id')
