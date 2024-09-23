@@ -16,6 +16,8 @@ import { AuthService } from './auth.service';
 import { AuthLogin } from './dto/login-payload.dto';
 import { UserLoginDto } from './dto/user-login.dto';
 import { Public } from '../../decorators/public.decorator';
+import { AuthRegister } from './dto/register-payload.dto';
+import { UserRegisterDto } from './dto/user-register.dto';
 
 @Controller({ version: '1', path: 'auth' })
 export class AuthController {
@@ -33,6 +35,19 @@ export class AuthController {
     const login = await this.authService.login(userLoginDto);
 
     return { data: login };
+  }
+
+  @Public()
+  @Post('register')
+  @HttpCode(HttpStatus.CREATED)
+  @ApiOkResponse({
+    type: AuthRegister,
+    description: 'User info with access token',
+  })
+  async register(@Body() userRegisterDto: UserRegisterDto) {
+    const register = await this.authService.register(userRegisterDto);
+
+    return { data: register };
   }
 
   @Get('/selfUser')

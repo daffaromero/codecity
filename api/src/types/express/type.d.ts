@@ -1,6 +1,6 @@
 import { BaseEntity } from 'src/common/base.entity';
 import { Resource } from 'src/common/resource';
-import { PageMetaDto } from '../../common/dto/page-meta.dto';
+import {} from '../../common/dto/page-meta.dto';
 import { PageDto } from '../../common/dto/page.dto';
 import { AuthEntityTypeEnum } from '../enums';
 

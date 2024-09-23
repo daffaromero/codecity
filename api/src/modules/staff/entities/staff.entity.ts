@@ -30,7 +30,7 @@ export class Staff extends BaseEntityWithUUID {
 
   @BeforeInsert()
   async hashUserPassword() {
-    if (this.passwordHash) {
+    if (this.passwordHash && !this.passwordHash.startsWith('$2b$')) {
       this.passwordHash = await hashPassword(this.passwordHash);
     }
   }
