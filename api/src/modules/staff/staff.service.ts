@@ -6,6 +6,7 @@ import { FindManyOptions, FindOptionsWhere, ILike } from 'typeorm';
 import { Staff } from './entities/staff.entity';
 import {
   NoStaffFoundError,
+  NotAllowedError,
   StaffAlreadyExistsError,
 } from '../../errors/ResourceError';
 import { GetStaffDto } from './dto/get-staff.dto';
@@ -35,13 +36,13 @@ export class StaffService {
 
   async findAll(
     options: GetStaffDto,
-  ): Promise<{ staffPlural: StaffDto[]; count: number; meta: PageMetaDto }> {
+  ): Promise<{ staffMany: StaffDto[]; count: number; meta: PageMetaDto }> {
     const whereFilters: FindOptionsWhere<Staff> = {};
     if (options.firstName)
       whereFilters.firstName = ILike(`%${options.firstName}%`);
     if (options.email) whereFilters.email = ILike(`%${options.email}%`);
 
-    const [staffPlural, count] = await Staff.findAndCount({
+    const [staffMany, count] = await Staff.findAndCount({
       where: whereFilters,
       take: options.pageSize,
       skip: options.page * options.pageSize,
@@ -50,8 +51,8 @@ export class StaffService {
       itemCount: count,
       pageOptionsDto: options,
     });
-    const staffDto = staffPlural.map((staff) => new StaffDto(staff));
-    return { staffPlural: staffDto, count, meta };
+    const staffDto = staffMany.map((staff) => new StaffDto(staff));
+    return { staffMany: staffDto, count, meta };
   }
 
   async findOne(options: { id: string }): Promise<StaffDto> {
@@ -63,10 +64,18 @@ export class StaffService {
     return staffDto;
   }
 
-  async update(id: string, options: UpdateStaffDto): Promise<Staff> {
+  async update(
+    currentStaffId: string,
+    id: string,
+    options: UpdateStaffDto,
+  ): Promise<Staff> {
+    if (currentStaffId !== id) {
+      NotAllowedError();
+    }
     const staff = await Staff.findOne({
       where: { id },
     });
+
     if (!staff) NoStaffFoundError();
 
     if (options.staffId) staff.staffId = options.staffId;

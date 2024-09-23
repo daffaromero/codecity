@@ -49,7 +49,7 @@ yarn install --frozen-lockfile
 
 ## Requirements Checklist
 - [x] Staff should be able to login
-- [ ] Staff should be able to logout
+- [x] Staff should be able to logout
 - [ ] Staff should be able to see another staff
 - [ ] Staff should be able to update the staff data
 - [ ] Staff should not be able to update another staff data

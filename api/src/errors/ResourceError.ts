@@ -31,3 +31,11 @@ export const WrongPasswordError = () => {
     'The password you provided is incorrect',
   );
 };
+
+export const NotAllowedError = () => {
+  throw new ApiError(
+    HttpStatus.UNAUTHORIZED,
+    'Not allowed',
+    'You are not allowed to perform this action',
+  );
+};

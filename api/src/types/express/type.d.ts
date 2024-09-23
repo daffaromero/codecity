@@ -39,7 +39,7 @@ declare global {
      * Currently we are storing id and email in JWT token
      */
     interface User {
-      id: number;
+      id: string;
       username: string;
     }
     export interface Request {
