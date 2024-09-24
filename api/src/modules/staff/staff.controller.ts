@@ -45,7 +45,6 @@ export class StaffController {
     @Body() options: UpdateStaffDto,
   ) {
     const currentStaffId = request.user.id;
-    console.log('request', request.user);
     const staff = await this.staffService.update(currentStaffId, id, options);
     return { data: staff };
   }

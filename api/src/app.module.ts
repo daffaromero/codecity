@@ -5,6 +5,7 @@ import { SharedModule } from './shared/shared.module';
 import { DatabaseConfigService } from './shared/config/database.service';
 import { StaffModule } from './modules/staff/staff.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { AttendanceModule } from './modules/attend/attendance.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AuthModule } from './modules/auth/auth.module';
     }),
     StaffModule,
     AuthModule,
+    AttendanceModule,
   ],
 })
 export class AppModule {}

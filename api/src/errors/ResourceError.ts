@@ -20,6 +20,14 @@ export const StaffAlreadyExistsError = () => {
   );
 };
 
+export const NoAttendancesFoundError = () => {
+  throw new ApiError(
+    HttpStatus.NOT_FOUND,
+    'Attendances not found',
+    'No attendances found for the specified staff and date',
+  );
+};
+
 /**
  * Auth-Related Errors
  */
